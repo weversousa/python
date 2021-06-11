@@ -1,0 +1,12 @@
+[default]
+SQLALCHEMY_DATABASE_URI = "sqlite:///supermercado.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+TITLE = "Supermercado"
+SECRET_KEY = "abobrinha"
+EXTENSIONS = [
+    "supermercado.database",
+    "supermercado.views",
+    "supermercado.cli",
+]
+
+[production]
