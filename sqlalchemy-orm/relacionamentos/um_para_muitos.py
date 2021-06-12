@@ -83,8 +83,14 @@ class Filho(Base):
         return f"<Filho(nome={self.nome}, sobrenome={self.sobrenome})>"
 
 
+# -----------------------------------------------------------------------------
+
+''' Exclui e cria novamente as tabelas sempre que o código é executado '''
+
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
+
+# -----------------------------------------------------------------------------
 
 filho_1 = Filho(nome='Filho1', sobrenome='Marques', pai_id=1)
 
@@ -97,30 +103,38 @@ except exc.IntegrityError:
     print('Isso não é possível, pois estamos usando chave estrangeira.')
     print('LEGAL! Pois o a função para ativar o PRAGMA do SQLite deu certo.')
     print('NÃO PODE ADICONAR UM FILHO QUE NÃO TENHA UM PAI CADASTRADO')
-
+# -----------------------------------------------------------------------------
 
 pai_1 = Pai(nome='João', sobrenome='Marques')
 session.add(pai_1)
 session.commit()
+# -----------------------------------------------------------------------------
 
-# Tendo um Pai cadastrado, agora podemos cadastrar um Filho a ele
+''' Tendo um Pai cadastrado, agora podemos cadastrar um Filho a ele '''
 id_pai_1 = session.query(Pai.id).filter(Pai.sobrenome == 'Marques').one()[0]
 
 filho_1 = Filho(nome='Marcos', sobrenome='Marques', pai_id=id_pai_1)
 filho_2 = Filho(nome='Paula', sobrenome='Marques', pai_id=id_pai_1)
 session.add_all([filho_1, filho_2])
 session.commit()
+# -----------------------------------------------------------------------------
 
+''' Enfim a parte que nos interessa, a mágica do Relacionamento não precisamos
+de uma query de ligação ou join para mostrar quem são os Filhos de cada Pai '''
 
-# Enfim a parte que nos interessa, a mágica do Relacionamento
-# Não precisamos fazer uma query para mostrar quem são os Filhos de cada Pai
 for pai in session.query(Pai).all():
     print('NOME DO PAI: ', pai.nome)
     for filho in pai.filhos:
         print('NOME DO FILHO: ', filho.nome)
 
+# Resultado:
+# NOME DO PAI:  João
+# NOME DO FILHO:  Marcos
+# NOME DO FILHO:  Paula
+# -----------------------------------------------------------------------------
 
-# Mais um Pai para ver que cada Pai estará associado somente ao seu Filho
+''' Mais um Pai para ver que cada Pai estará associado somente ao seu Filho '''
+
 pai_2 = Pai(nome='Maria', sobrenome='Pereira')
 session.add(pai_2)
 session.commit()
@@ -138,3 +152,13 @@ for pai in session.query(Pai).all():
     for filho in pai.filhos:
         print('NOME DO FILHO: ', filho.nome)
     print()
+
+# Resultado:
+# ----------------------------
+# NOME DO PAI:  João
+# NOME DO FILHO:  Marcos
+# NOME DO FILHO:  Paula
+
+# NOME DO PAI:  Maria
+# NOME DO FILHO:  Luciano
+# NOME DO FILHO:  Carlos

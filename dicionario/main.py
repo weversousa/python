@@ -11,7 +11,7 @@ print(produtos)
 # {'arroz': 28.9, 'cafe': 9.9}
 # -----------------------------------------------------------------------------
 
-''' Criando um diconário através do método dict '''
+''' Criando um dicionário através do método dict '''
 
 produtos_novos = dict([('tomate', 2.89), ('shampoo', 12.99)])
 print(produtos_novos)
@@ -105,5 +105,5 @@ valor_total = {fruta[0].capitalize(): fruta[1] * 2 for fruta in frutas}
 
 print(valor_total)
 
-# Resultado
+# Resultado:
 # {'Maça': 5.8, 'Uva': 15.8, 'Mamao': 11.8, 'Pera': 8.86}
