@@ -1,51 +1,109 @@
-fruta1 = {}
+''' Forma literal de criar um dicionário '''
 
-# Atribuindo Chave / Valor
-fruta1['nome'] = 'uva'
-fruta1['preco'] = 3.99
-
-# Atribuindo de forma Literal
-fruta2 = {
-    'nome': 'abacai',
-    'preco': 4.55
+produtos = {
+    'arroz': 28.90,
+    'cafe': 9.90,
 }
 
-# Alterando o valor de uma Chave
-fruta2['nome'] = 'melão'
+print(produtos)
 
-# Dicionário dentro de um dicionário
-endereco = {
-    'cidade': 'Osasco',
-    'bairro': 'Altino',
-    'cep': {
-        '06210050': {
-            'tipo_logradouro': 'Rua',
-            'logradouro': 'Ana Zozi Toni',
-            'numero': 1000
-        }
-    }
-}
+# Resultado:
+# {'arroz': 28.9, 'cafe': 9.9}
+# -----------------------------------------------------------------------------
 
+''' Criando um diconário através do método dict '''
 
-# Acessando
-endereco['cep']['06210050']['logradouro']  # Ana Zozi Toni
+produtos_novos = dict([('tomate', 2.89), ('shampoo', 12.99)])
+print(produtos_novos)
 
-# Percorrendo um Dicionário
-pessoa = {'nome': 'Paula', 'idade': 30, 'sexo': 'feminino'}
+# Resultado:
+# {'tomate': 2.89, 'shampoo': 12.99}
+# -----------------------------------------------------------------------------
 
-for chave, valor in pessoa.items():
-    print(chave, valor)
+''' Forma tradicional de criar um dicionário '''
 
-for chave in pessoa.keys():
-    print(chave)
+mais_produtos = {}
+mais_produtos['leite'] = 3.40
+print(mais_produtos)
 
-for valor in pessoa.values():
-    print(valor)
+# Resultado:
+# {'leite': 3.4}
+# -----------------------------------------------------------------------------
 
-for chave in pessoa:
-    print(pessoa[chave])
+''' Juntando dicionários '''
 
+produtos.update(produtos_novos)
+print(produtos)
 
-frutas = [('maçã', 2.30), ('bana', 5.40)]
-frutas = dict(frutas)
-print(frutas)
+# Resultado:
+# {'arroz': 28.9, 'cafe': 9.9, 'tomate': 2.89, 'shampoo': 12.99}
+# -----------------------------------------------------------------------------
+
+''' Juntando dicionários '''
+
+for produto, valor in mais_produtos.items():
+    produtos[produto] = valor
+
+print(produtos)
+
+# Resultado:
+# {'arroz': 28.9, 'cafe': 9.9, 'tomate': 2.89, 'shampoo': 12.99, 'leite': 3.4}
+# -----------------------------------------------------------------------------
+
+''' Acessando chaves de um dicionário '''
+
+print(produtos.get('cafe', 'Chave não encontrada.'))
+print(produtos.get('nescau', 'Chave não encontrada.'))
+
+# Resultado:
+# 9.9
+# Chave não encontrada.
+# -----------------------------------------------------------------------------
+
+''' Verificando se uma chave existe '''
+
+print('leite' in produtos)
+
+# Resultado:
+# True
+# -----------------------------------------------------------------------------
+
+''' Verificando se um valor existe '''
+
+print(3.40 in produtos.values())
+
+# Resultado:
+# True
+# -----------------------------------------------------------------------------
+
+''' Deletando - no caso do del se não existir gera um erro '''
+
+del produtos['arroz']
+print(produtos)
+
+# Resultado:
+# {'cafe': 9.9, 'tomate': 2.89, 'shampoo': 12.99, 'leite': 3.4}
+# -----------------------------------------------------------------------------
+
+''' Deletando - Com pop não gera erro caso não exista e retona o valor '''
+
+print(produtos.pop('tomate', 'Produto não encontrado'))
+print(produtos.pop('melancia', 'Produto não encontrado'))
+print(produtos)
+
+# Resultado:
+# 2.89
+# Produto não encontrado
+# {'cafe': 9.9, 'shampoo': 12.99, 'leite': 3.4}
+# -----------------------------------------------------------------------------
+
+''' Compreensão de Dicionário '''
+
+frutas = [('maça', 2.90), ('uva', 7.90), ('mamao', 5.90), ('pera', 4.43)]
+
+valor_total = {fruta[0].capitalize(): fruta[1] * 2 for fruta in frutas}
+
+print(valor_total)
+
+# Resultado
+# {'Maça': 5.8, 'Uva': 15.8, 'Mamao': 11.8, 'Pera': 8.86}
