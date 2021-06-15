@@ -1,3 +1,6 @@
+from operator import itemgetter
+
+
 ''' Forma literal de criar um dicionário '''
 
 produtos = {
@@ -107,3 +110,39 @@ print(valor_total)
 
 # Resultado:
 # {'Maça': 5.8, 'Uva': 15.8, 'Mamao': 11.8, 'Pera': 8.86}
+# -----------------------------------------------------------------------------
+
+''' Ordernar um dicionário pela Chave '''
+
+frutas_ordenadas = dict(
+    sorted(valor_total.items(), key=itemgetter(0))
+)
+
+print(frutas_ordenadas)
+
+# Resultado:
+# {'Maça': 5.8, 'Uva': 15.8, 'Mamao': 11.8, 'Pera': 8.86}
+# -----------------------------------------------------------------------------
+
+''' Ordernar um dicionário pelo Valor '''
+
+frutas_ordenadas = dict(
+    sorted(valor_total.items(), key=itemgetter(1))
+)
+
+print(frutas_ordenadas)
+
+# Resultado:
+# {'Maça': 5.8, 'Pera': 8.86, 'Mamao': 11.8, 'Uva': 15.8}
+# -----------------------------------------------------------------------------
+
+''' Ordernar um dicionário pelo Valor de forma DECRESCENTE '''
+
+frutas_ordenadas = dict(
+    sorted(valor_total.items(), key=itemgetter(1), reverse=True)
+)
+
+print(frutas_ordenadas)
+
+# Resultado:
+# {'Uva': 15.8, 'Mamao': 11.8, 'Pera': 8.86, 'Maça': 5.8}
