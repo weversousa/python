@@ -75,7 +75,6 @@ class Conexao:
             return False
         finally:
             cursor.close()
-            print('aaa')
 
     def fechar(self):
         self._connection.close()
