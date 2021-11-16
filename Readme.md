@@ -89,7 +89,7 @@ math.ceil(meu_numero)  # 10
 math.floor(meu_numero)  # 9
 ```
 
-## Cocatenação
+## Concatenação
 ### Usando o sinal `+`
 ```python
 nome = "Weverton"
@@ -264,9 +264,6 @@ dicionario.update(novo_dicionario)
 dicionario  # {'nome': 'Pedro Muller', 'cidade': 'Bahia'}
 ```
 ```python
-
-```
-```python
 dicionario = {"nome": "Paula", "idade": 25}
 dicionario.clear()
 dicionario  # {}
@@ -343,6 +340,12 @@ dict(sorted(dicionario.items()))  # {'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5}
 
 sorted(dicionario.items(), reverse=True)  # [('u', 5), ('o', 4), ('i', 3), ('e', 2), ('a', 1)]
 dict(sorted(dicionario.items(), reverse=True))  # {'u': 5, 'o': 4, 'i': 3, 'e': 2, 'a': 1}
+
+sorted(dicionario.items(), key=lambda item: item[1])  # [('a', 1), ('e', 2), ('i', 3), ('o', 4), ('u', 5)]
+dict(sorted(dicionario.items(), key=lambda item: item[1]))  # {'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5}
+
+sorted(dicionario.items(), reverse=True, key=lambda item: item[1])  # [('u', 5), ('o', 4), ('i', 3), ('e', 2), ('a', 1)]
+dict(sorted(dicionario.items(), reverse=True, key=lambda item: item[1]))  # {'u': 5, 'o': 4, 'i': 3, 'e': 2, 'a': 1}
 ```
 ```python
 dicionario = {"sp": "São Paulo", "rj": "Rio de Janeiro", "ba": "Bahia"}
