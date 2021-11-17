@@ -22,19 +22,26 @@ com aspas simples
 ## Variável
 Para declarar uma variável em Python por conveção devemos seguir o padrão **Snake case** caso ela seja composta por mais de uma palavra.
 ```python
-primeiro_nome
-segundo_nome
-nome_completo
-idade
-preco
+primeiro_nome = "Weverton"
+segundo_nome = "Teixeira"
+nome_completo = "Weverton Teixeira"
+idade = 30
+peso = 60.57
 ```
 
 ## Constante
 Para declarar uma constante em Python por conveção devemos escrve-lá em letras maisúculas e seguir o padrão **Snake case** caso ela seja composta por mais de uma palavra.
 ```python
-CONEXAO_BANCO_DE_DADOS
-PI
+CONEXAO_BANCO_DE_DADOS = "..."
+PI = 3.14
 ```
+
+```python
+nome = "Weverton"
+del nome
+nome  # NameError: name 'nome' is not defined
+```
+
 
 ## String
 Podemos criar um valor String em Python com aspas duplas ou simples.
@@ -595,3 +602,52 @@ def minha_funcao(**kwargs):
 
 minha_funcao(nome="Weverton", idade=30, peso=60.49)
 ```
+
+## Escopo
+```python
+# Escopo global
+n = 10
+
+def minha_funcao():
+    # Escopo local
+    n = 55
+
+n  # 10
+``` 
+
+## Orientação a Objeto
+```
+class Car:
+    # atributos de classe
+    rodas = 4
+    portas = 2
+    
+    # Método construtor
+    def __init__(self)
+    # atributos de instância
+    motor = True
+
+
+# Instância de uma classe
+carro_um = Car()
+carro_dois = Car()
+
+# Altera para todas as classe
+Car.portas = 4
+
+# Altera somente na instância
+carro_um.portas = 2
+
+# Acessando atributos de uma classe, o mesmo serve para os comportamentos (métodos)
+carro_um.portas  # 2
+carro_dois.portas  # 4
+
+# cada instância tem seu id, por isso que se a gente alterar o atributo de uma instância não aletar de todas
+id(carro_um)  # 139971849561744
+id(carro_dois)  # 139971849561824
+
+# Verificar se um objeto é a instância de uma certa classe
+isinstance(carro_um, Car)  # True
+```
+
+
