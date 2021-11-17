@@ -119,6 +119,29 @@ quantidade = 2
 detalahe_compra = f"{item} {preco} {quantidade} R$ {preco * quantidade}"  # arroz 24.99 2 R$ 49.98
 ```
 
+## Estruturas de Condição
+### `if elif e else`
+```python
+nota = 6.5
+
+if nota > = 7.0:
+    situacao = "Aprovado"
+elif nota > 5.0:
+    situacao = "Em recuperação"
+else:
+    situacao = "Reprovado"
+    
+situacao  # Em recuperação
+```
+### Operador Ternário `<conteúdo 1> if <condição> else <conteúdo 2>`
+```python
+idade = 15
+
+situacao = "Maior de idade" if idade >= 18 else "Menor de idade"
+
+situacao  # Menor de idade
+```
+
 ## Coleções
 ### Listas
 ```python
@@ -426,7 +449,7 @@ C = A & C
 C  # {0, 9}
 ```
 ```python
-'''
+"""
 Símbolo matemático | Operador Python | Descrição
 ----------------------------------------------------------------------
 E ∈ S              | in              | elemento E é membro de S
@@ -435,5 +458,100 @@ A ⊂ B              | <               | A é um subconjunto próprio de B
 A ∪ B              | |               | A união com B
 A ∩ B              | &               | A interseção com B
 A ∖ B              | -               | diferença entre A e B
-'''
+"""
+```
+
+## Estruturas de Repetição
+### `for <item> in <iterável>` 
+```python
+for fruta in ["banana", "uva", "jaca"]:
+    print(fruta)
+# banana
+# uva
+# jaca
+```
+```python
+for letra in "Ana":
+    print(letra)
+# A
+# n
+# a
+```
+```python
+for indice, curso in enumerate(["Python", "Java", "HTML", "PHP"]):
+    print(indice, curso)
+# 0 Python
+# 1 Java
+# 2 HTML
+# 3 PHP
+
+for indice, curso in enumerate(["Python", "Java", "HTML", "PHP"], start=1):
+    print(indice, curso)
+# 1 Python
+# 2 Java
+# 3 HTML
+# 4 PHP
+```
+
+```python
+for n in range(3):
+    print(n)
+# 0
+# 1
+# 2
+
+for n in range(1, 3):
+    print(n)
+# 1
+# 2
+
+for par in range(2, 11, 2):
+    print(n)
+# 2
+# 4
+# 6
+# 8
+# 10
+
+for n in range(3, 0, -1):
+    print(n)
+# 3
+# 2
+# 1
+```
+```python
+for letra in ["a", "c", "a", "b", "d", "a"]:
+    if letra == "a":
+         continue
+    print(letra)
+# c
+# b
+# d
+```
+```python
+for letra in ["a", "c", "a", "b", "d", "a"]:
+    if letra == "b":
+         break
+    print(letra)
+# a
+# c
+# a
+```
+
+### `while <condição>` 
+```python
+c = 1
+
+while c < 4:
+    print(c)
+    c += 1
+# 1
+# 2
+# 3
+```
+```python
+while True:
+    entrada = input("Deseja sair? [s/n]")
+    if entrada.strip().lower() == "s":
+        break
 ```
