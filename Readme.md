@@ -56,7 +56,7 @@ COR = 'preta'
 "11955553333".isalnum()  # True
 "1195555-3333".isalnum()  # False
 "abacaxi".index("x")  # 5
-"abacaxi".index("a")  # 0  # retorno o índice da primeira letra "a" encontrada
+"abacaxi".index("a")  # 0  # retorna o índice da primeira letra "a" encontrada
 "98e".isnumeric()  # False
 "98".isnumeric()  # True
 "São Paulo - RJ".replace("RJ", "SP")  # São Paulo - SP
@@ -65,13 +65,13 @@ COR = 'preta'
 ```
 
 ## Int e Float
-Existem dois tipos numérico em Python, int e float que são uma classe, e por isso possuem métodos e atributos.
+Existem dois tipos numéricos em Python, int e float.
 ```python
 inteiro = 7
 flutuante = 13.99
 ```
 ### Métodos
-O método round() é interno do Python e não pertence a classe numérica, ele serve para arredondar um valor flutuante para quantas casas decimais a gente definir, caso não passe o número de casas decimais ele arredonda para o valor inteiro mais próximo.
+O método round() é interno do Python e não pertence as classes numérica, ele serve para arredondar um valor flutuante para quantas casas decimais a gente definir, caso não passe o número de casas decimais ele arredonda para o valor inteiro mais próximo.
 ```python
 numero = 9.7483020
 round(numero, 2)  # 9.75
@@ -110,7 +110,7 @@ nome_completo.format(nome, sobrenome)  # Paula Silva
 ### Usando o `fstring`
 ```python
 nome = "Maria"
-sobrenome = "Clata"
+sobrenome = "Clara"
 nome_completo = f"{nome} {sobrenome}"  # Maria Clara
 
 item = "arroz"
@@ -120,7 +120,7 @@ detalahe_compra = f"{item} {preco} {quantidade} R$ {preco * quantidade}"  # arro
 ```
 
 ## Estruturas de Condição
-### `if elif e else`
+### `if` `elif` e `else`
 ```python
 nota = 6.5
 
@@ -133,12 +133,10 @@ else:
     
 situacao  # Em recuperação
 ```
-### Operador Ternário `<conteúdo 1> if <condição> else <conteúdo 2>`
+### Operador Ternário: <conteúdo> `if` <condição> `else` <conteúdo>
 ```python
 idade = 15
-
 situacao = "Maior de idade" if idade >= 18 else "Menor de idade"
-
 situacao  # Menor de idade
 ```
 
@@ -190,7 +188,7 @@ lista  # ['manteiga', 'arroz']
 ```python
 lista = ["dia"]
 nova_lista = ["noite", "tarde"]
-outra_lista = lista_1 + lista_2
+outra_lista = lista + nova_lista
 outra_lista  # ['dia', 'noite', 'tarde']
 ```
 ```python
@@ -206,7 +204,7 @@ uvas  # 3
 ```
 ```python
 lista = ["carro", "moto"]
-nova_lista = lista_12.copy()
+nova_lista = lista.copy()
 lista.clear()
 lista  # []
 nova_lista  # ['carro', 'moto']
@@ -254,11 +252,8 @@ tamanho  # 2
 ```
 ```python
 lista = [1, 2, 3]
-
 nova_lista = lista
-
 nova_lista[0] = 50
-
 lista  # [50, 2, 3]
 ```
 
@@ -462,7 +457,7 @@ A ∖ B              | -               | diferença entre A e B
 ```
 
 ## Estruturas de Repetição
-### `for <item> in <iterável>` 
+### `for` <item> `in` <iterável> 
 ```python
 for fruta in ["banana", "uva", "jaca"]:
     print(fruta)
@@ -538,7 +533,7 @@ for letra in ["a", "c", "a", "b", "d", "a"]:
 # a
 ```
 
-### `while <condição>` 
+### `while` <condição>
 ```python
 c = 1
 
@@ -583,11 +578,8 @@ resultado  # 7
 def minha_funcao(*args):
     type(args)  # <class 'tuple'>
     args  # ('bola', 'sacola', 'boné', 'luvas')
-
-minha_funcao("bola", "sacola", "boné", "luvas")
-```
-```python
-def minha_funcao(*args):
+    
+    # Desempacotando
     item_1, item_2, item_3, item_4 = args
     item_1  # bola
     item_2  # sacola
