@@ -464,7 +464,7 @@ A ∖ B              | -               | diferença entre A e B
 ```
 
 ## Estruturas de Repetição
-### `for` <item> `in` <iterável> 
+### `for` <elemento> `in` <iterável> 
 ```python
 for fruta in ["banana", "uva", "jaca"]:
     print(fruta)
@@ -612,6 +612,7 @@ def minha_funcao():
     # Escopo local
     n = 55
 
+minha_funcao()
 n  # 10
 ``` 
 
@@ -650,4 +651,21 @@ id(carro_dois)  # 139971849561824
 isinstance(carro_um, Car)  # True
 ```
 
+## Tratamento de erro
+```
+total_almoco = 100.00
 
+try:
+    pessoas = int(input("Dividir em quantas pessoas: "))
+    total_pessoa = total_almoco / pessoas
+except ValueError as err:
+    print("O valor digitado não é um número.", err)
+except ZeroDivisionError as err:
+    print("O valor digitado não pode ser zero.", err)
+else:
+    print(total_pessoa)
+finally:
+    print("Eu sempre aconteço.")
+```
+    
+    
