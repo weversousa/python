@@ -555,3 +555,51 @@ while True:
     if entrada.strip().lower() == "s":
         break
 ```
+
+## Funções
+```python
+def saudacao():
+    print("Olá!")
+
+saudacao()
+```
+```python
+def saudacao(parametro):
+    print(f"Olá, {parametro}!")
+
+arguemnto = "Weverton"
+saudacao(argumento)
+```
+
+### Lambda
+```python
+soma = lambda n_1, n_2: n_1 + n_2
+resultado = lambda(3, 4)
+resultado  # 7
+```
+
+### Packing (Empacotar) e Unpacking (Desempacotar)
+```python
+def minha_funcao(*args):
+    type(args)  # <class 'tuple'>
+    args  # ('bola', 'sacola', 'boné', 'luvas')
+
+minha_funcao("bola", "sacola", "boné", "luvas")
+```
+```python
+def minha_funcao(*args):
+    item_1, item_2, item_3, item_4 = args
+    item_1  # bola
+    item_2  # sacola
+    item_3  # boné
+    item_4  # luvas
+
+minha_funcao("bola", "sacola", "boné", "luvas")
+```
+```python
+def minha_funcao(**kwargs):
+    type(kwargs)  # <class 'dict'>
+    kwargs  # {'nome': 'Weverton', 'idade': 30, 'peso': 60.49}
+
+minha_funcao(nome="Weverton", idade=30, peso=60.49)
+```
