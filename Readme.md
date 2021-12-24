@@ -51,6 +51,7 @@ saída:
 
 ```
 
+### Métodos da String
 ```python
 print('uva'.upper())
 
@@ -207,12 +208,17 @@ saída:
 ### Biblioteca MATH
 ```python
 from math import ceil, floor, sqrt, pow
+
+
 # Maior número mais próximo
 print(ceil(9.9483020))
+
 # Menor número mais próximo
 print(floor(9.9483020))
+
 # Raiz quadrada
 print(sqrt(49))
+
 # Exponenciação
 print(pow(2, 3))
 
@@ -326,6 +332,7 @@ saída: <class 'NoneType'>
 
 ```python
 nome = 'Paula'
+
 if nome:
     print(nome)
 else:
@@ -336,6 +343,7 @@ saída: Paula
 
 ```python
 nome = None
+
 if nome:
     print(nome)
 else:
@@ -391,18 +399,19 @@ print(x)
 # Pegar argumentos digitados no terminal ao executar um arquivo Python
 from sys import argv
 
+
 if __name__ == '__main__':
     print(argv)
+
 
 # Executar no terminal
 python <nome_arquivo.py> oi este é um teste
 
-saída:
-['.\\obter_argumento_do_terminal.py', 'oi', 'este', 'é', 'um', 'teste']
+saída: ['.\\obter_argumento_do_terminal.py', 'oi', 'este', 'é', 'um', 'teste']
 ```
 
 
-## Operador Atribuição
+## Operador de Atribuição
 
 ### Simples
 ```python
@@ -488,7 +497,9 @@ True
 ```
 
 
-## Lista
+## Coleções
+
+### Lista
 * indexada
 * heterogênea
 * mutável
@@ -627,8 +638,7 @@ Abacaxi
 homogenea = [1, '2', 15.85, True, False, ['uva'], ('azul'), {'nome': 'Paula'}]
 ```
 
-
-## Tupla
+### Tupla
 * indexada
 * heterogênea
 * imutável
@@ -693,8 +703,7 @@ BA
 Bahia
 ```
 
-
-## Dicionário
+### Dicionário
 ```python
 endereco = {'cep': '05110-030', 'numero': '1235'}
 print(endereco)
@@ -881,8 +890,7 @@ saída:
 {'u': 5, 'o': 4, 'i': 3, 'e': 2, 'a': 1}
 ```
 
-
-# Conjunto
+### Conjunto
 * não aceita valores repetidos
   
 ```python
@@ -944,7 +952,7 @@ saída:
 set()
 ```
 
-### Operação Matemática
+#### Operação Matemática
 ```python
 A = {0, 1, 3, 5, 7, 9}
 B = {0, 2, 4, 6, 8}
@@ -981,7 +989,7 @@ A ∩ B | & | A interseção com B
 A ∖ B | - | diferença entre A e B
 
 
-# Built-in
+## Built-in
 ```python
 # Retorna sempre o valor como positivo
 print(abs(-4))
@@ -1235,6 +1243,7 @@ saída: [2, 4]
 # Necessário importar da biblioteca functools
 from functools import reduce
 
+
 numeros = [1, 2, 3, 4, 5]
 
 # REDUCE, retorna um único valor
@@ -1248,6 +1257,7 @@ saída:
 15
 5
 ```
+
 
 ## Tratamento de Erro
 ```python
@@ -1400,7 +1410,7 @@ a
 ```
 
 
-## Estruturas de Condição
+## Estrutura de Condição
 
 ### WHILE
 ```python
@@ -1483,8 +1493,6 @@ saída:
 
 ## Orientação a Objeto
 * PascalCase
-
-![poo](https://user-images.githubusercontent.com/69995549/147306746-0c08ef82-cac8-4a4f-adc6-d43026fd2474.png)
 
 ```python
 class Pessoa:
@@ -2026,6 +2034,19 @@ Thiago Macedo
 ```
 
 ### Polimorfismo
+* Estático, quando ocorre a sobrecarga de um método (o memso método ocorre mais de uma vez no código)
+* Dinâmico, você sobrescreve o método com um comportamento diferente na classe filha
+```python
+class Pizza:
+    def ingredientes(self):
+        return 'Ingredientes'
+
+
+class Mussarela(Pizza):
+    # Polimorfirmos
+    def ingredientes(self):
+        return ['queijo', 'tomate', 'orégano']
+```
 
 ### Métodos e Classes Abstratas
 * Uma classe abstrata não pode ser instanciada, somente serve para servir de herança
@@ -2200,4 +2221,46 @@ class Repositorio:
 
     def select_all(self):
         return self.__select.select_many()
+```
+
+
+## JSON
+```python
+import json
+import os
+
+
+dict_pessoa = [{'nome': 'Paula','idade': 24,'peso': 56.98,'filhos': ['Clara', 'Victor']}]
+
+# O modo escrita (w) faz com que caso exista um arquivo ele apague tudo e crie um novo
+# Por isso é bom confirmar se o arquivo já existe, para não perder os dados
+if not os.path.exists('pessoa.json'):
+    with open('pessoa.json', 'w', encoding='utf8') as json_pessoa:
+        json.dump(dict_pessoa, json_pessoa, ensure_ascii=False, indent=4, sort_keys=True)
+```
+
+```python
+import json
+import os
+
+
+dict_pessoa = [{'nome': 'Paula','idade': 24,'peso': 56.98,'filhos': ['Clara', 'Victor']}]
+
+# O modo escrita (w) faz com que caso exista um arquivo ele apague tudo e crie um novo
+# Por isso é bom confirmar se o arquivo já existe, para não perder os dados
+if not os.path.exists('pessoa.json'):
+    with open('pessoa.json', 'w', encoding='utf8') as json_pessoa:
+        json.dump(dict_pessoa, json_pessoa, ensure_ascii=False, indent=4, sort_keys=True)
+```
+
+```python
+import json
+import os
+
+
+if os.path.exists('pessoa.json'):
+    with open('pessoa.json', 'r') as json_pessoa:
+        print(json.load(json_pessoa))
+
+saída: [{'filhos': ['Clara', 'Victor'], 'idade': 24, 'nome': 'Paula', 'peso': 56.98}]
 ```
