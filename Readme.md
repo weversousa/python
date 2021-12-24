@@ -2264,3 +2264,64 @@ if os.path.exists('pessoa.json'):
 
 saída: [{'filhos': ['Clara', 'Victor'], 'idade': 24, 'nome': 'Paula', 'peso': 56.98}]
 ```
+
+
+## Compreensão de Lista
+```python
+list_numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+list_pares = [numero for numero in list_numeros if numero % 2 == 0]
+print(list_pares)
+
+saída: [2, 4, 6, 8, 10]
+```
+
+```python
+listas = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+]
+impares = [numero for lista in listas for numero in lista if numero % 2 != 0]
+print(impares)
+
+saída: [1, 3, 5, 7, 9]
+```
+
+
+## Compreensão de Dicionário
+```python
+frutas = [('maça', 2.90), ('uva', 7.90), ('mamao', 5.90), ('pera', 4.43)]
+valor_total = {fruta[0].capitalize(): fruta[1] * 2 for fruta in frutas if fruta[0] != 'uva'}
+print(valor_total)
+
+saída: {'Maça': 5.8, 'Mamao': 11.8, 'Pera': 8.86}
+```
+
+
+## Compreensão de Gerador
+* Não carrega todo o arquivo para a memória conforme os demais
+* Ótimo para arquivos grandes
+
+```python
+gerador = (n for n in range(1, 7) if n % 2 == 0) 
+print(next(gerador))
+print(next(gerador))
+print(next(gerador))
+
+saída:
+2
+4
+6
+```
+
+```python
+gerador = (n for n in range(1, 7) if n % 2 != 0)
+
+for n in gerador:
+    print(n)
+
+saída:
+1
+3
+5
+```
