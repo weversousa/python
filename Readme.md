@@ -2225,18 +2225,158 @@ class Repositorio:
 
 
 ## JSON
+`json.dumps` converte um objeto Python em uma String com formato válido de um JSON
+`json.dump` converte um objeto Python em uma String com formato válido de um JSON e salva externamente esse arquivo.
+`json.loads` converte um JSON válido em um objeto Python.
+`json.load` converte objeto derivado de um JSON válido em um objeto Python. (exempo: quando usado o opem() para abrir um JSON)
+
 ```python
 import json
-import os
 
 
-dict_pessoa = [{'nome': 'Paula','idade': 24,'peso': 56.98,'filhos': ['Clara', 'Victor']}]
+dict_funcionario = {
+    'nome': 'Paula Andrade',
+    'idade': 24,
+    'endereco': {
+        'logradouro': 'Rua Oscar Freire',
+        'numero': 2_250,
+        'bairro': 'Pinheiros',
+        'cidade': 'São Paulo',
+        'uf': 'SP'
+    },
+    'salario': 3_580.00,
+    'empregado': True,
+    'cargo': 'Desenvolvedor',
+    'list_linguagem': [
+        'Python',
+        'HTML5',
+        'CSS3',
+        'ECMAScript'
+    ]
+}
+print(type(dict_funcionario))
 
-# O modo escrita (w) faz com que caso exista um arquivo ele apague tudo e crie um novo
-# Por isso é bom confirmar se o arquivo já existe, para não perder os dados
-if not os.path.exists('pessoa.json'):
-    with open('pessoa.json', 'w', encoding='utf8') as json_pessoa:
-        json.dump(dict_pessoa, json_pessoa, ensure_ascii=False, indent=4, sort_keys=True)
+json_funcionario = json.dumps(dict_funcionario, ensure_ascii=False, indent=4, sort_keys=True)
+print(type(json_funcionario))
+print(json_funcionario)
+
+
+saída:
+<class 'dict'>
+
+<class 'str'>
+{
+    "cargo": "Desenvolvedor",
+    "empregado": true,
+    "endereco": {
+        "bairro": "Pinheiros",
+        "cidade": "São Paulo",
+        "logradouro": "rua Oscar Freire",
+        "numero": 2250,
+        "uf": "SP"
+    },
+    "idade": 24,
+    "list_linguagem": [
+        "Python",
+        "HTML5",
+        "CSS3",
+        "ECMAScript"
+    ],
+    "nome": "Paula Andrade",
+    "salario": 3580.0
+}
+```
+
+```python
+import json
+
+
+list_funcionario = [
+    {
+        'nome': 'Paula Andrade',
+        'idade': 24,
+        'endereco': {
+            'logradouro': 'Rua Oscar Freire',
+            'numero': 2_250,
+            'bairro': 'Pinheiros',
+            'cidade': 'São Paulo',
+            'uf': 'SP'
+        },
+        'salario': 3_580.00,
+        'empregado': True,
+        'cargo': 'Desenvolvedor',
+        'list_linguagem': [
+            'Python',
+            'HTML5',
+            'CSS3',
+            'ECMAScript'
+        ]
+    },
+    {
+        'nome': 'Jaqueline Cardeal',
+        'idade': 33,
+        'endereco': {
+            'logradouro': 'Avenida Paulista',
+            'numero': 1_100,
+            'bairro': 'Consolação',
+            'cidade': 'São Paulo',
+            'uf': 'SP'
+        },
+        'salario': 5_800.00,
+        'empregado': False,
+        'cargo': 'Desenvolvedor',
+        'list_linguagem': [
+            'Java',
+            'SQL'
+        ]
+    }
+]
+
+json_funcionario = json.dumps(list_funcionario, ensure_ascii=False, indent=4, sort_keys=True)
+print(json_funcionario)
+
+
+saída:
+[
+    {
+        "cargo": "Desenvolvedor",
+        "empregado": true,
+        "endereco": {
+            "bairro": "Pinheiros",
+            "cidade": "São Paulo",
+            "logradouro": "Rua Oscar Freire",
+            "numero": 2250,
+            "uf": "SP"
+        },
+        "idade": 24,
+        "list_linguagem": [
+            "Python",
+            "HTML5",
+            "CSS3",
+            "ECMAScript"
+        ],
+        "nome": "Paula Andrade",
+        "salario": 3580.0
+    },
+    {
+        "cargo": "Desenvolvedor",
+        "empregado": false,
+        "endereco": {
+            "bairro": "Consolação",
+            "cidade": "São Paulo",
+            "logradouro": "Avenida Paulista",
+            "numero": 1100,
+            "uf": "SP"
+        },
+        "idade": 33,
+        "list_linguagem": [
+            "Java",
+            "SQL"
+        ],
+        "nome": "Jaqueline Cardeal",
+        "salario": 5800.0
+    }
+]
 ```
 
 ```python
@@ -2244,13 +2384,72 @@ import json
 import os
 
 
-dict_pessoa = [{'nome': 'Paula','idade': 24,'peso': 56.98,'filhos': ['Clara', 'Victor']}]
+list_funcionario = [
+    {
+        'nome': 'Paula Andrade',
+        'idade': 24,
+        'endereco': {
+            'logradouro': 'Rua Oscar Freire',
+            'numero': 2_250,
+            'bairro': 'Pinheiros',
+            'cidade': 'São Paulo',
+            'uf': 'SP'
+        },
+        'salario': 3_580.00,
+        'empregado': True,
+        'cargo': 'Desenvolvedor',
+        'list_linguagem': [
+            'Python',
+            'HTML5',
+            'CSS3',
+            'ECMAScript'
+        ]
+    },
+    {
+        'nome': 'Jaqueline Cardeal',
+        'idade': 33,
+        'endereco': {
+            'logradouro': 'Avenida Paulista',
+            'numero': 1_100,
+            'bairro': 'Consolação',
+            'cidade': 'São Paulo',
+            'uf': 'SP'
+        },
+        'salario': 5_800.00,
+        'empregado': False,
+        'cargo': 'Desenvolvedor',
+        'list_linguagem': [
+            'Java',
+            'SQL'
+        ]
+    }
+]
 
-# O modo escrita (w) faz com que caso exista um arquivo ele apague tudo e crie um novo
-# Por isso é bom confirmar se o arquivo já existe, para não perder os dados
-if not os.path.exists('pessoa.json'):
-    with open('pessoa.json', 'w', encoding='utf8') as json_pessoa:
-        json.dump(dict_pessoa, json_pessoa, ensure_ascii=False, indent=4, sort_keys=True)
+if not os.path.exists('funcionario.json'):
+    with open('funcionario.json', 'w', encoding='UTF-8') as json_funcionario:
+        json.dump(list_funcionario, json_funcionario, ensure_ascii=False, indent=4, sort_keys=True)
+```
+
+```python
+import json
+
+
+json_funcionario = '''{
+    "nome": "Paula",
+    "idade": 24
+}'''
+print(type(json_funcionario))
+
+dict_funcionario = json.loads(json_funcionario)
+print(type(dict_funcionario))
+print(dict_funcionario)
+
+
+saída:
+<class 'str'>
+
+<class 'dict'>
+{'nome': 'Paula', 'idade': 24}
 ```
 
 ```python
@@ -2258,11 +2457,9 @@ import json
 import os
 
 
-if os.path.exists('pessoa.json'):
-    with open('pessoa.json', 'r') as json_pessoa:
-        print(json.load(json_pessoa))
-
-saída: [{'filhos': ['Clara', 'Victor'], 'idade': 24, 'nome': 'Paula', 'peso': 56.98}]
+if os.path.exists('funcionario.json'):
+    with open('funcionario.json', 'r', encoding='UTF-8') as json_funcionario:
+        dict_funcionario = json.load(json_funcionario)
 ```
 
 
