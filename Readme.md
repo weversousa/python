@@ -467,32 +467,30 @@ print(True or False)
 print(False or True)
 print(False or False)
 
-saída:
-True
-False
-False
-False
-
-True
-True
-True
-False
-```
-
-
-## Operador de Negação
-```python
+# NÃO (Negação)
 print(not True)
-print(not not False)
-
 print(not False)
+
+# Dupla Negação
+print(not not False)
 print(not not True)
 
+
 saída:
+True
+False
 False
 False
 
 True
+True
+True
+False
+
+False
+True
+
+False
 True
 ```
 
@@ -657,7 +655,7 @@ vogais = tuple('aeiou')
 print(type(vogais))
 print(vogais)
 
-# Caso só tenha um elemnto e não seja colocado vírgula, não será uma Tupla
+# Caso só tenha um elemento e não seja colocado vírgula, não será uma Tupla
 x = 1
 y = (1)
 print(type(n))
@@ -716,7 +714,7 @@ print(type(mercado))
 pessoa = {}
 pessoa['nome'] = 'Paula'
 pessoa['sexo'] = 'feminino'
-pessoa['idade'] = 'masculino'
+pessoa['idade'] = 24
 print(pessoa)
 print(type(pessoa))
 
@@ -728,7 +726,7 @@ saída:
 {'arroz': 22.4, 'feijão': 9.32, 'café': 13.5}
 <class 'dict'>
 
-{'nome': 'Paula', 'sexo': 'feminino', 'idade': 'masculino'}
+{'nome': 'Paula', 'sexo': 'feminino', 'idade': 24}
 <class 'dict'>
 ```
 
@@ -898,7 +896,7 @@ set_vogais = {'a', 'e', 'e', 'a', 'i', 'o', 'a', 'i', 'u', 'u'}
 print(type(set_vogais))
 print(set_vogais)
 
-set_frutas = set(['banana', 'maça', 'banana', 'uva', 'banana', 'maça', 'uva', 'pêra'])
+set_frutas = set(['banana', 'maçã', 'banana', 'uva', 'banana', 'maçã', 'uva', 'pêra'])
 print(type(set_frutas))
 print(set_frutas)
 
@@ -907,7 +905,7 @@ saída:
 {'u', 'e', 'a', 'i', 'o'}
 
 <class 'set'>
-{'uva', 'banana', 'maça', 'pêra'}
+{'uva', 'banana', 'maçã', 'pêra'}
 ```
 
 ```python
