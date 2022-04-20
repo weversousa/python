@@ -1,4 +1,0 @@
-Nome,Clube
-C. Ronaldo,Juventus
-Messi,Barcelona
-Neymar,PSG
